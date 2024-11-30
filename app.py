@@ -4,6 +4,8 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 import joblib
+import os
+
 
 app = Flask(__name__)
 
@@ -143,4 +145,5 @@ def redirect_html(page):
     return redirect(url_for(page))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))  
+    app.run(host='0.0.0.0', port=port)
